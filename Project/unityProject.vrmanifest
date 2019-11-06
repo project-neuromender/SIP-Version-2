@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.socket.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "E:\\Users\\Nur Amiera\\Desktop\\GitHub\\SIP\\Project\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Project [Testing]"
+        }
+      }
+    }
+  ]
+}

@@ -53,5 +53,6 @@ MonoBehaviour:
   - ReleaseOldSocket
   - StartInteraction
   - Drop
+  - Start
   DisableAutoOpenWizard: 1
   ShowSettings: 1

@@ -36,9 +36,9 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
         name = PhotonNetwork.LocalPlayer.NickName;
         Debug.Log("Player Name MyPlayer : " + name);
 
-        //GameObject.Find("Button").GetComponentInChildren<Text>().text = name;
-        gameObject.transform.SetParent(GameObject.Find("Button").transform, false);
-        gameObject.GetComponentInChildren<Text>().text = name ;
+        GameObject.Find("Button").GetComponentInChildren<Text>().text = name;
+        //gameObject.transform.SetParent(GameObject.Find("Button").transform, false);
+        //gameObject.GetComponentInChildren<Text>().text = name ;
 
     }
 

@@ -23,7 +23,7 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
 
     // public Text PlayerName;
 
-    // private new string name;
+    private new string name;
     // public Text text;
 
        
@@ -38,14 +38,14 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
      public void Start()
      {
        
-        //if (photonView.IsMine)
-        //{
-        //  name = PhotonNetwork.LocalPlayer.NickName;
-        // Debug.Log("Player Name MyPlayer : " + name);
+        if (photonView.IsMine)
+        {
+          name = PhotonNetwork.LocalPlayer.NickName;
+         Debug.Log("Player Name MyPlayer : " + name);
 
         // text.text = (name);
-        // GameObject.Find("PlayerName").GetComponentInChildren<Text>().text = name;
-        // }
+        GameObject.Find("PlayerName").GetComponentInChildren<Text>().text = name;
+        }
     }
 
     // Start is called before the first frame update

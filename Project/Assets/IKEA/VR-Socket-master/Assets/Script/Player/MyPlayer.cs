@@ -19,30 +19,34 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
     Quaternion latestRot;
     private PhotonView PV;
 
+  
+
     // public Text PlayerName;
 
-     private new string name;
-     public Text text;
+    // private new string name;
+    // public Text text;
 
+       
 
     //private PlayerInputField PlayerInputField;
     //private Launcher launcher;
 
     #region MonoBehaviour CallBacks
 
-    
+
     [PunRPC]
      public void Start()
      {
-         if (photonView.IsMine)
-         {
-             name = PhotonNetwork.LocalPlayer.NickName;
-             Debug.Log("Player Name MyPlayer : " + name);
+       
+        //if (photonView.IsMine)
+        //{
+        //  name = PhotonNetwork.LocalPlayer.NickName;
+        // Debug.Log("Player Name MyPlayer : " + name);
 
-             text.text = (name);
-             // GameObject.Find("PlayerName").GetComponentInChildren<Text>().text = name;
-         }
-     }
+        // text.text = (name);
+        // GameObject.Find("PlayerName").GetComponentInChildren<Text>().text = name;
+        // }
+    }
 
     // Start is called before the first frame update
     void Awake()

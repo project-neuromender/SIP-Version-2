@@ -17,7 +17,7 @@ public class AppearPlayerName : MonoBehaviourPunCallbacks
     public void SetPlayerInfo(Player player)
     {
         Player = player;
-        _text.text = PhotonNetwork.LocalPlayer.NickName;
+        _text.text = PhotonNetwork.NickName;
     }
    
 }

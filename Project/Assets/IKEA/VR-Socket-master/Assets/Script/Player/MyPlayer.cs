@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
 {
+  
     public Camera cam;
     // liat of scripts that should only be active for the local player( PlayerController)
     public MonoBehaviour[] localScripts;
@@ -18,21 +19,33 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
     Quaternion latestRot;
     private PhotonView PV;
 
-   // public Text PlayerName;
+  
 
-    private string name;
+    // public Text PlayerName;
+
+    private new string name;
+    // public Text text;
+
+       
 
     //private PlayerInputField PlayerInputField;
     //private Launcher launcher;
 
     #region MonoBehaviour CallBacks
 
-    public void Start()
-    {
-        name = PhotonNetwork.NickName;
-        Debug.Log("Player Name MyPlayer : " + name);
 
-        GameObject.Find("Button").GetComponentInChildren<Text>().text = name;
+    [PunRPC]
+     public void Start()
+     {
+       
+        if (photonView.IsMine)
+        {
+          name = PhotonNetwork.LocalPlayer.NickName;
+         Debug.Log("Player Name MyPlayer : " + name);
+
+        // text.text = (name);
+        GameObject.Find("PlayerName").GetComponentInChildren<Text>().text = name;
+        }
     }
 
     // Start is called before the first frame update

@@ -564,7 +564,7 @@ public class Keyboard_MainMenu : MonoBehaviour
         }
         else if (PasswordCheck == true && UserNameCheck == false)
         {
-            Password.text = Password.text + "s";
+            Password.text = Password.text + "S";
             Password.caretPosition = (Password.text.Length) + 2;
         }
     }

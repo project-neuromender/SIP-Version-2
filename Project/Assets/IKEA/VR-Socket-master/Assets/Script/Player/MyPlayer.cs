@@ -18,21 +18,28 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
     Quaternion latestRot;
     private PhotonView PV;
 
-   // public Text PlayerName;
+    // public Text PlayerName;
 
     private string name;
-
-    //private PlayerInputField PlayerInputField;
-    //private Launcher launcher;
-
+   
     #region MonoBehaviour CallBacks
 
+   
     public void Start()
+    {       
+        PlayerName(name);        
+    }
+
+    [PunRPC]
+    public void PlayerName(string name)
     {
-        name = PhotonNetwork.NickName;
+        name = PhotonNetwork.LocalPlayer.NickName;
         Debug.Log("Player Name MyPlayer : " + name);
 
-        GameObject.Find("Button").GetComponentInChildren<Text>().text = name;
+        //GameObject.Find("Button").GetComponentInChildren<Text>().text = name;
+        gameObject.transform.SetParent(GameObject.Find("Button").transform, false);
+        gameObject.GetComponentInChildren<Text>().text = name ;
+
     }
 
     // Start is called before the first frame update
@@ -50,6 +57,8 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
             photonView.RPC("Static", RpcTarget.AllBuffered);
             photonView.RPC("ParentChild", RpcTarget.AllBuffered);
             photonView.RPC("Rotation", RpcTarget.AllBuffered);
+            photonView.RPC("PlayerName", RpcTarget.AllBuffered, (string)name);
+
             
             // MyPlayer.LocalPlayerInstance = this.gameObject;
             //DontDestroyOnLoad(this.gameObject);

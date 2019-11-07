@@ -53,5 +53,7 @@ MonoBehaviour:
   - ReleaseOldSocket
   - StartInteraction
   - Drop
+  - PlayerName
+  - Start
   DisableAutoOpenWizard: 1
   ShowSettings: 1

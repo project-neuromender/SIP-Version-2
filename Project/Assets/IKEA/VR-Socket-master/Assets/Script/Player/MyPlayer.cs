@@ -18,6 +18,11 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
     Quaternion latestRot;
     private PhotonView PV;
 
+    //public GameObject canvas;
+    //public GameObject button;
+    //public Transform spawnPoint;
+
+
     // public Text PlayerName;
 
     private string name;
@@ -26,20 +31,31 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
 
    
     public void Start()
-    {       
+    {
+        //PhotonNetwork.Instantiate(this.button.name, spawnPoint.position, Quaternion.identity, 0);
         PlayerName(name);        
     }
 
     [PunRPC]
     public void PlayerName(string name)
     {
-        name = PhotonNetwork.LocalPlayer.NickName;
-        Debug.Log("Player Name MyPlayer : " + name);
+        if (photonView.IsMine)
+        {
+            //GameObject go = PhotonNetwork.Instantiate(this.canvas.name, spawnPoint.position, Quaternion.identity, 0);
+            //go.transform.parent = GameObject.Find("Player").transform;
 
-        GameObject.Find("Button").GetComponentInChildren<Text>().text = name;
-        //gameObject.transform.SetParent(GameObject.Find("Button").transform, false);
-        //gameObject.GetComponentInChildren<Text>().text = name ;
+            //PhotonNetwork.Instantiate(this.canvas.name, spawnPoint.position, Quaternion.identity, 0);
+            //name = PhotonNetwork.LocalPlayer.NickName;
+            //Debug.Log("Player Name MyPlayer : " + name);
+            //Debug.Log("Player Name Photon View : " + photonView.Owner.NickName);
+            Debug.Log("Player Name Photon View : " + PhotonNetwork.NickName);
 
+            //GameObject.Find("Button").GetComponentInChildren<Text>().text = photonView.Owner.NickName;
+            GameObject.Find("Button").GetComponentInChildren<Text>().text = PhotonNetwork.NickName;
+
+            //gameObject.transform.SetParent(GameObject.Find("Button").transform, false);
+            //gameObject.GetComponentInChildren<Text>().text = name ;
+        }   
     }
 
     // Start is called before the first frame update
@@ -90,6 +106,7 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
         {
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
+            stream.SendNext(name);
 
         }
 
@@ -97,6 +114,7 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
         {
             latestPos = (Vector3)stream.ReceiveNext();
             latestRot = (Quaternion)stream.ReceiveNext();
+
         }
     }
 

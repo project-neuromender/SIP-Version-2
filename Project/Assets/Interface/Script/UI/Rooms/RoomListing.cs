@@ -16,25 +16,38 @@ public class RoomListing : MonoBehaviour
 
     private string roomname;
 
+    [SerializeField]
+    private RoomListingMenu roomlisting;
+
     public RoomInfo RoomInfo { get; private set; }
     
     public void SetRoomInfo(RoomInfo roomInfo)
     {
         RoomInfo = roomInfo;
-        _text.text = roomInfo.MaxPlayers + " , " + roomInfo.Name;
+        _text.text = roomInfo.Name;
 
         roomname = roomInfo.Name;
 
         Debug.Log("Room Name : " + roomname);
+
+        //if (roomlisting.RoomTest == true)
+        //{
+            //PhotonNetwork.JoinRoom(roomname);
+        //}
+
+
     }
 
-    public void OnClick_Button()
+    /*public void OnClick_Button()
     {
         //Debug.Log("Room Name : " + RoomInfo.Name);
-        //Debug.Log("Room Name : " + roomname);
+        Debug.Log("Room Name : " + roomname);
 
         //Debug.Log("Joining room in the list");
         //PhotonNetwork.JoinRoom(roomname);
         //Debug.Log("Room Listing Menu : Join Room");
-    }
+
+        //SetRoomInfo(RoomInfo);
+        //Debug.Log("Debug " + SetRoomInfo(RoomInfo));
+    }*/
 }

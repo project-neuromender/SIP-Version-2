@@ -20,6 +20,10 @@ public class RoomListingMenu : MonoBehaviourPunCallbacks
     private List<RoomListing> _listing = new List<RoomListing>();
     private RoomCanvases _roomCanvases;
 
+    public bool RoomTest = false;
+
+    private string roomname;
+
     public void FirstInitialize(RoomCanvases canvases)
     {
         _roomCanvases = canvases;
@@ -32,13 +36,23 @@ public class RoomListingMenu : MonoBehaviourPunCallbacks
 
     public void PointerClick(object sender, PointerEventArgs e)
     {
-        if (e.target.name == "RoomListing")
+        if (e.target.name == "RoomListing(Clone)")
         {
             Debug.Log("Room Listing was clicked");
-            _roomListing.OnClick_Button();
+            //place that need to insert on join room 
+            //xtahu keluar ape
+            //PhotonNetwork.JoinRoom(_roomListing.RoomInfo.Name);
+            //PhotonNetwork.JoinRoom();
+            //GameObject.Find("RoomListing(Clone)").GetComponentInChildren<Text>().text = PhotonNetwork.NickName;
+            roomname = GameObject.Find("RoomListing(Clone)").GetComponentInChildren<Text>().text;
+            Debug.Log("Room : " + roomname);
+            PhotonNetwork.JoinRoom(roomname);
+
+
         }
     }
 
+   
     public override void OnJoinedRoom()
     {
         _roomCanvases.CurrentRoomCanvas.Show();
@@ -50,12 +64,15 @@ public class RoomListingMenu : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        int i = 0;
+
         foreach (RoomInfo info  in roomList)
         {
             //remove from room list.
             if (info.RemovedFromList)
             {
                 int index = _listing.FindIndex(x => x.RoomInfo.Name == info.Name);
+                
                 if(index != -1)
                 {
                     Destroy(_listing[index].gameObject);
@@ -66,14 +83,19 @@ public class RoomListingMenu : MonoBehaviourPunCallbacks
             else
             {
                 int index = _listing.FindIndex(x => x.RoomInfo.Name == info.Name);
+                
                 if (index == -1)
                 {
                     RoomListing listing = Instantiate(_roomListing, _content);
+                    
+                    
                     if (listing != null)
                     {
                         listing.SetRoomInfo(info);
                         _listing.Add(listing);
+                        
                     }
+                   
                 }
                 else
                 {

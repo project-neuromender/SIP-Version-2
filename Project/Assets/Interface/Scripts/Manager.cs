@@ -65,9 +65,9 @@ public class Manager : MonoBehaviourPunCallbacks
 
     [Tooltip("The prefab to use for representing the player")]
     public  GameObject playerPrefab;
-    //public GameObject Button;
+    //public Button Button;
     public Transform spawnPoint;
-    //public Canvas canvas;
+    //public GameObject canvas;
 
     #endregion
 
@@ -90,8 +90,11 @@ public class Manager : MonoBehaviourPunCallbacks
         //Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
         // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
 
+        //PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPoint.position, Quaternion.identity, 0);
+
         PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPoint.position, Quaternion.identity, 0);
-        //PhotonNetwork.Instantiate(this.canvas.name, spawnPoint.position, Quaternion.identity, 0);
+        //PhotonNetwork.Instantiate(this.Button.name, spawnPoint.position, Quaternion.identity, 0);
+
 
         //else
         //{

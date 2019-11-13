@@ -16,8 +16,7 @@ public class RoomListing : MonoBehaviour
 
     private string roomname;
 
-    [SerializeField]
-    private RoomListingMenu roomlisting;
+    public int[] number;
 
     public RoomInfo RoomInfo { get; private set; }
     
@@ -27,27 +26,39 @@ public class RoomListing : MonoBehaviour
         _text.text = roomInfo.Name;
 
         roomname = roomInfo.Name;
+        Debug.Log("Room Listing: " + roomname);
 
-        Debug.Log("Room Name : " + roomname);
+        /*for (int i = 1; i >= 100; i++)
+        {
+            roomname[i] = roomInfo.Name;
+            Debug.Log("1: " + roomname[i]);
+        }*/
 
-        //if (roomlisting.RoomTest == true)
-        //{
-            //PhotonNetwork.JoinRoom(roomname);
-        //}
-
+        //Debug.Log("Room Name : " + roomname);
 
     }
 
-    /*public void OnClick_Button()
+    public void PointerClick(object sender, PointerEventArgs e)
     {
-        //Debug.Log("Room Name : " + RoomInfo.Name);
-        Debug.Log("Room Name : " + roomname);
+        if (e.target.name == "RoomListing(Clone)")
+        {
+            Debug.Log("Room Listing was clicked");
 
-        //Debug.Log("Joining room in the list");
-        //PhotonNetwork.JoinRoom(roomname);
-        //Debug.Log("Room Listing Menu : Join Room");
+            /*roomname = GameObject.Find("RoomListing(Clone)").GetComponentInChildren<Text>().text;
+            Debug.Log("Room : " + roomname);
+            PhotonNetwork.JoinRoom(roomname);*/
 
-        //SetRoomInfo(RoomInfo);
-        //Debug.Log("Debug " + SetRoomInfo(RoomInfo));
-    }*/
+            OnClick_Button();
+
+
+        }
+
+    }
+
+    public void OnClick_Button()
+    {
+        roomname = GameObject.Find("RoomListing(Clone)").GetComponentInChildren<Text>().text;
+        Debug.Log("Room : " + roomname);
+        //PhotonNetwork.JoinRoom(roomname); 
+    }
 }

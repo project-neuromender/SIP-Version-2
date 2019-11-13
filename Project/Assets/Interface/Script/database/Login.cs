@@ -64,7 +64,15 @@ public class Login : MonoBehaviour
 
     public void VerifyInputs()
     {
-        submitButton.interactable = (nameField.text.Length >= 8 && passwordField.text.Length >= 8);
+        //submitButton.interactable = (nameField.text.Length >= 8 && passwordField.text.Length >= 8);
+        if (nameField.text.Length >= 4 && passwordField.text.Length >= 4)
+        {
+            submitButton.interactable = true;
+        }
+        else
+        {
+            submitButton.interactable = false;
+        }
     }
 
     public void OnClick_BackButton()

@@ -36,29 +36,7 @@ public class RoomListing : MonoBehaviour
 
         //Debug.Log("Room Name : " + roomname);
 
-    }
+    }   
 
-    public void PointerClick(object sender, PointerEventArgs e)
-    {
-        if (e.target.name == "RoomListing(Clone)")
-        {
-            Debug.Log("Room Listing was clicked");
-
-            /*roomname = GameObject.Find("RoomListing(Clone)").GetComponentInChildren<Text>().text;
-            Debug.Log("Room : " + roomname);
-            PhotonNetwork.JoinRoom(roomname);*/
-
-            OnClick_Button();
-
-
-        }
-
-    }
-
-    public void OnClick_Button()
-    {
-        roomname = GameObject.Find("RoomListing(Clone)").GetComponentInChildren<Text>().text;
-        Debug.Log("Room : " + roomname);
-        //PhotonNetwork.JoinRoom(roomname); 
-    }
+    
 }

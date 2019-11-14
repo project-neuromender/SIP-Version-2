@@ -57,23 +57,24 @@ using Photon.Realtime;
         /// Sets the name of the player, and save it in the PlayerPrefs for future sessions.
         /// </summary>
         /// <param name="value">The name of the Player</param>
-        public void SetPlayerName(string value)
+        public void SetPlayerName(string name)
         {
             // #Important
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(name))
             {
                 Debug.LogError("Player Name is null or empty");
                 return;
             }
-            PhotonNetwork.NickName = value;
-        //Debug.Log("PhotonNetwork.Nickname : " + PhotonNetwork.NickName);
-        //Debug.Log("value : " + value);
+            PhotonNetwork.NickName = name;        
+        
+        //PlayerPrefs.SetString(playerNamePrefKey, name);
+        //PlayerPrefs.SetString();
 
-        PlayerPrefs.SetString(playerNamePrefKey, value);
-        //Debug.Log("playerNamePrefKey: " + playerNamePrefKey);
-        }
+
+    }
 
 
         #endregion
-    }
+   
+}
 

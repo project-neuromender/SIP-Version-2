@@ -16,13 +16,22 @@ public class Launcher : MonoBehaviourPunCallbacks
     public Text Status;
     public Text _playerName;
 
+    public string PlayerName ;
+    private string key;
+
     //public Text playername;
 
     string roomName = "My Room";
     bool ShowGUI = true;
 
     public SteamVR_LaserPointer laserPointer;
-    
+
+
+    public void Start()
+    {
+        
+
+    }
 
     public void OnClick_ConnectBtn()
     {
@@ -30,12 +39,25 @@ public class Launcher : MonoBehaviourPunCallbacks
         Status.text = "Connecting to Server...";
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.NickName = _playerName.text;
-        Debug.Log(PhotonNetwork.NickName);
+        Debug.Log("Player Name Photon Network: " + PhotonNetwork.NickName);
+       
+        PlayerName = _playerName.text;
+        //Debug.Log("Player Name: " + PlayerName);
+
         PhotonNetwork.GameVersion = _gameVersion;
         PhotonNetwork.ConnectUsingSettings();
+
+        if (PlayerPrefs.GetString("key") == PlayerName)
+        {
+            Debug.Log("Player Name: " + PlayerName);
+        }
     }
 
-    
+    public void Update()
+    {
+        PlayerPrefs.SetString("key" , PlayerName);
+    }
+
 
     private void Awake()
     {

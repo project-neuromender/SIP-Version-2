@@ -3081,6 +3081,7 @@ MonoBehaviour:
   - {fileID: 5839447677361079973}
   - {fileID: 4192543659259209892}
   localObjects: []
+  DisplayName: mieta
 --- !u!114 &3628892861927112850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4569,7 +4570,7 @@ PrefabInstance:
     - target: {fileID: 2356225947019896178, guid: ff767452a99293a41be39662422f521e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 817894022334259224, guid: ff767452a99293a41be39662422f521e,
         type: 3}

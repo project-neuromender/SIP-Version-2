@@ -23,40 +23,40 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
     //public Transform spawnPoint;
 
 
-    // public Text PlayerName;
+    //public Text PlayerName;
 
-    private string name;
+    //private string name;
+
+    public string DisplayName;
+
+    
    
     #region MonoBehaviour CallBacks
 
    
     public void Start()
-    {
-        //PhotonNetwork.Instantiate(this.button.name, spawnPoint.position, Quaternion.identity, 0);
-        PlayerName(name);        
+    {           
+        SetPlayerName(name);
+        //DisplayName = GameObject.Find(launcher)
     }
 
-    [PunRPC]
-    public void PlayerName(string name)
+    
+
+   
+    public void SetPlayerName(string name)
     {
         if (photonView.IsMine)
         {
-            //GameObject go = PhotonNetwork.Instantiate(this.canvas.name, spawnPoint.position, Quaternion.identity, 0);
-            //go.transform.parent = GameObject.Find("Player").transform;
+            DisplayName = PlayerPrefs.GetString("key", "PlayerName");
+            Debug.Log("Player Name Display : " + DisplayName);
+            Debug.Log("Player Name Photon View : " + PhotonNetwork.NickName);      
+            GameObject.Find("Button").GetComponentInChildren<Text>().text = DisplayName;
 
-            //PhotonNetwork.Instantiate(this.canvas.name, spawnPoint.position, Quaternion.identity, 0);
-            //name = PhotonNetwork.LocalPlayer.NickName;
-            //Debug.Log("Player Name MyPlayer : " + name);
-            //Debug.Log("Player Name Photon View : " + photonView.Owner.NickName);
-            Debug.Log("Player Name Photon View : " + PhotonNetwork.NickName);
-
-            //GameObject.Find("Button").GetComponentInChildren<Text>().text = photonView.Owner.NickName;
-            GameObject.Find("Button").GetComponentInChildren<Text>().text = PhotonNetwork.NickName;
-
-            //gameObject.transform.SetParent(GameObject.Find("Button").transform, false);
-            //gameObject.GetComponentInChildren<Text>().text = name ;
+            
         }   
     }
+
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -127,6 +127,8 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
             transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
 
         }
+
+        
 
     }
     #endregion

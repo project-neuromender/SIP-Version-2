@@ -24,9 +24,12 @@ public class Login : MonoBehaviour
     public void PointerClick(object sender, PointerEventArgs e)
     {
         if (e.target.name == "LoginButton")
-        {
-            Debug.Log("Login button clicked");
-            CallLogin();
+        {            
+            if (submitButton.interactable == true)
+            {
+                    Debug.Log("Login button clicked");
+                    CallLogin();
+                }
         }
         else if (e.target.name == "BackButton")
         {

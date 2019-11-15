@@ -93,7 +93,7 @@ public class Manager : MonoBehaviourPunCallbacks
         //PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPoint.position, Quaternion.identity, 0);
 
         PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPoint.position, Quaternion.identity, 0);
-        //PhotonNetwork.Instantiate(this.Button.name, spawnPoint.position, Quaternion.identity, 0);
+        
 
 
         //else

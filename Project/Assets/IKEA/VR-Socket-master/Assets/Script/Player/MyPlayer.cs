@@ -84,7 +84,9 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
         {
             //deactivate if it is not YOU.
             cam.enabled = false;
-            //player is remote, deactivate the scripts and object that should only be enabled for the local player
+            //player is remote, deactivate the scripts and object
+            //that should only be enabled for the local player
+
             for (int i = 0; i < localScripts.Length; i++)
             {
                 localScripts[i].enabled = false;
@@ -106,8 +108,7 @@ public class MyPlayer : MonoBehaviourPunCallbacks, IPunObservable
         {
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
-            stream.SendNext(name);
-
+            
         }
 
         else if (stream.IsReading)

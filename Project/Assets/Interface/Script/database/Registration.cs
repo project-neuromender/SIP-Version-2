@@ -31,14 +31,21 @@ public class Registration : MonoBehaviour
         }
         if (e.target.name == "RegisterButton")
         {
-            Debug.Log("Register was clicked");
-            CallRegister();
+            if (submitButton.interactable == true)
+            {
+                Debug.Log("Register was clicked");
+                CallRegister();
+            }
         }
     }
 
     public void VerifyInputs()
     {
-        submitButton.interactable = (nameField.text.Length >= 8 && passwordField.text.Length >= 8);
+        if ((nameField.text.Length >= 4 && passwordField.text.Length >= 4))
+        {
+            submitButton.interactable = true;
+        }
+        //submitButton.interactable = (nameField.text.Length >= 4 && passwordField.text.Length >= 4);
     }
 
     public void OnClick_ButtonBack()

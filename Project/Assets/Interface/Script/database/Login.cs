@@ -25,8 +25,12 @@ public class Login : MonoBehaviour
     {
         if (e.target.name == "LoginButton")
         {
-            Debug.Log("Login button clicked");
-            CallLogin();
+            if (submitButton.interactable == true)
+            {
+                Debug.Log("Login button clicked");
+                CallLogin();
+            }
+            
         }
         else if (e.target.name == "BackButton")
         {
@@ -64,7 +68,12 @@ public class Login : MonoBehaviour
 
     public void VerifyInputs()
     {
-        submitButton.interactable = (nameField.text.Length >= 8 && passwordField.text.Length >= 8);
+        if ((nameField.text.Length >= 4 && passwordField.text.Length >= 4))
+        {
+            submitButton.interactable = true;
+        }
+
+        //submitButton.interactable = (nameField.text.Length >= 4 && passwordField.text.Length >= 4);
     }
 
     public void OnClick_BackButton()

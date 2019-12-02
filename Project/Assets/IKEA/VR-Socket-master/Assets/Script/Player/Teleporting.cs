@@ -34,6 +34,7 @@ public class Teleporting : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
+            //pointer
             m_HasPosition = UpdatePointer();
             M_Pointer.SetActive(m_HasPosition);
 

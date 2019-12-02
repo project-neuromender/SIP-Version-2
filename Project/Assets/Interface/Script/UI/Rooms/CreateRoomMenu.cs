@@ -66,18 +66,10 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsConnected)
         {
-            //return;
-
             PhotonNetwork.CreateRoom(_RoomName.text, new RoomOptions { MaxPlayers = 4 }, null);
             Debug.Log("Create Room success" + _RoomName.text );
-            //PanelTesting.SetActive(true);
-            //_roomCanvases.CurrentRoomCanvas.Show();
-
-
         }
-        /*RoomOptions options = new RoomOptions();
-        options.MaxPlayers = 4;
-        PhotonNetwork.JoinOrCreateRoom(_RoomName.text, options, TypedLobby.Default);*/
+        
     }
 
     public void OnClick_JoinRoom()
